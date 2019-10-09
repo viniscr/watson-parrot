@@ -2,7 +2,7 @@ from ibm_watson import TextToSpeechV1
 import requests
 import json
 
-class RobotAudio(object):
+class AudioRobot(object):
 
     def __init__(self):
         self.voice = 'pt-BR_IsabelaV3Voice'
@@ -19,13 +19,13 @@ class RobotAudio(object):
         # choose voice
         # voice = self.text_to_speech.get_voice('en-US_AllisonVoice').get_result()
         # print(json.dumps(voice, indent=2))
-        filename= "teste"
+        filename = "teste"
         with open('audios/{}.wav'.format(filename).lower(), 'wb') as audio_file:
             audio_file.write(
                 self.text_to_speech.synthesize(
                     text,
-                    voice=self.voice,
-                    accept='audio/wav'        
+                    voice = self.voice,
+                    accept = 'audio/wav'        
                 ).get_result().content
             )
 
